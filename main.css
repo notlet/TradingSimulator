@@ -1,0 +1,165 @@
+body {
+    background-color: #171717;
+    user-select: none;
+    margin: 0; 
+    height: 100%; 
+    overflow: hidden;
+}
+
+/* Loading screen stuff */
+#loading-screen {position: absolute;z-index: 99;text-align: center;width: 100vw;height: 100vh;top: 0;}
+#loading-text {z-index: 5;position: fixed;top: 200px;right: 35%;left: 35%;font-family: 'Oswald';color: #ffffff;text-align: center;font-size: 50px;font-weight: 500;text-shadow: 0px 0px 3px #000000;}
+#lpart {background: #141212;width: 50vw;height: 100vh;position: fixed;z-index: 4;top: 0;left: 0;}
+#rpart {background: #141212;width: 50vw;height: 100vh;position: fixed;z-index: 4;top: 0;right: 0;}
+/* end */
+
+*:focus { outline: 0; }
+
+.center {
+    text-align: center;
+}
+
+.header {
+    font-family: 'Oswald';
+    font-size: 30px;
+    color: #ededed;
+    font-weight: 400;
+    text-align: center;
+    padding: 10px;
+}
+
+.title {
+    font-family: 'Oswald';
+    font-size: 40px;
+    color: #ededed;
+    font-weight: 400;
+}
+
+.half-page-block {
+    width: 46%;
+    height: auto;
+    display: inline-block;
+}
+
+.nextdaybtn {
+    position: absolute;
+    bottom: 20px;
+    right: 15px;
+    border: 0;
+    background: #1f1f1f;
+    color: #ededed;
+    padding: 10px 20px;
+    font-family: 'Oswald';
+    font-size: 25px;
+    border-radius: 0;
+    box-shadow: 0px 0px 2px 1px #ededed;
+    transition: all 500ms;
+}
+
+.nextdaybtn:hover {
+    background: #292929;
+    color: #ffffff;
+    box-shadow: 0px 0px 2px 1px #ffffff;
+}
+
+.popup {
+    position: relative;
+    left: -50%;
+    box-shadow: 0px 0px 3px 2px #ededed;
+    padding: 20px;
+    background: #292929;
+    font-family: 'Oswald';
+    color: #ededed;
+    font-size: 30px;
+}
+
+#popupbuttons button {
+    background: #303030;
+    border: solid 1px #ededed;
+    font-family: 'Oswald';
+    font-size: 20px;
+    width: max-content;
+    color: #ededed;
+    transition: all 400ms;
+}
+
+#popupbuttons button:hover {
+    background: #3d3d3d;
+    color: #ffffff;
+}
+
+#amount-select button {
+    border: 0;
+    background: #303030;
+    color: #ededed;
+    display: inline-block;
+    font-size: 15px;
+    font-family: 'Oswald';
+    padding: 5px;
+    transition: all 400ms;
+}
+
+#amount-select button:hover {
+    background: #3d3d3d;
+    color: #ffffff;
+}
+
+#amount-select div {
+    border: 0;
+    color: #ededed;
+    display: inline-block;
+    font-size: 15px;
+    font-family: 'Oswald';
+    padding: 5px;
+}
+
+.stockslistouter {
+    height: 70vh;
+    overflow-y: auto;
+}
+
+.stockslist {
+    height: auto;
+    display: table;
+    margin-top: 20px;
+}
+
+.stock {
+    font-size: 30px;
+    font-family: 'Oswald';
+    color: #c4c4c4;
+    height: auto;
+    width: fit-content;
+    display: table-row;
+}
+
+.stock > * {
+    display: table-cell;
+    padding: 5px;
+}
+
+#shortname {
+    text-align: left;
+    border-right: solid 2px #ededed;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+#name {
+    text-align: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: auto;
+}
+
+#price {
+    text-align: right;
+    border-right: solid 2px #ededed;
+    padding-right: 10px;
+}
+
+#amount {
+    text-align: left;
+    padding-left: 10px;
+    border-left: solid 2px #ededed;
+}
