@@ -1,6 +1,6 @@
 # Trading Simulator
 Buy and sell stocks to make (ingame) money!
-#### Update logs: see commits descriptions.
+#### Update logs: see [commits](https://github.com/LetGame/TradingSimulator/commits/main).
 ## How to install
 *1.* Download [this zip](https://github.com/LetGame/TradingSimulator/archive/refs/heads/main.zip). <br>
 *2.* Extract it anywhere. <br>
