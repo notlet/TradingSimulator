@@ -34,6 +34,10 @@ function findWithAttr(array, attr, value) {
     return -1;
 }
 
+function numberspacer(value) {
+        return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+}
+
 function enablepopup() {
     $('#elementblocker').show()
     $('#popupouter').show().fadeOut(0).fadeIn(500);
@@ -53,17 +57,17 @@ function redraw() {
     var html = ''
 
     for (i = 0; i < marketstocks.length; i++) {
-        html = html + `<div class="stock" id="${marketstocks[i].id}"><a id="price">${marketstocks[i].price}$</a><a id="shortname">${marketstocks[i].id}</a><a id="name">${marketstocks[i].name}</a></div>`
+        html = html + `<div class="stock" id="${marketstocks[i].id}"><a id="price">${numberspacer(marketstocks[i].price)}$</a><a id="shortname">${marketstocks[i].id}</a><a id="name">${marketstocks[i].name}</a></div>`
     }
     $(".market .stockslist").html(html);
 
     html = ''
     for (i = 0; i < ownedstocks.length; i++) {
-        html = html + `<div class="stock" id="${ownedstocks[i].id}"><a id="price">${ownedstocks[i].price}$</a><a id="shortname">${ownedstocks[i].id}</a><a id="name">${ownedstocks[i].name}</a><a id="amount">x${ownedstocks[i].amount}</a></div>`
+        html = html + `<div class="stock" id="${ownedstocks[i].id}">${calculateprofit(ownedstocks[i].id)}<a id="price">${numberspacer(ownedstocks[i].price)}$</a><a id="shortname">${ownedstocks[i].id}</a><a id="name">${ownedstocks[i].name}</a><a id="amount">x${numberspacer(ownedstocks[i].amount)}</a></div>`
     }
     $(".inventory .stockslist").html(html);
 
-    $("#moneyval").text(playermoney);
+    $("#moneyval").text(numberspacer(playermoney));
 
     $('.market .stock').click(function(event) {var parentid = $(event.target).parent().attr('id'); marketstockclick(parentid)})
     $('.inventory .stock').click(function(event) {var parentid = $(event.target).parent().attr('id'); inventorystockclick(parentid)})
@@ -175,8 +179,8 @@ function marketstockclick(id) {
     $('.popup #totalprice').text(stockprice * stockamount);
     enablepopup();
     $('.popup #amount-select *').click(function() {
-        $('#popup-amt').text(stockamount);
-        $('.popup #totalprice').text(stockprice * stockamount);
+        $('#popup-amt').text(numberspacer(stockamount));
+        $('.popup #totalprice').text(numberspacer(stockprice * stockamount));
     })
 
     $('.popup #buy-btn').attr('onclick', 'buystock(stockid, stockamount); disablepopup();');
@@ -196,8 +200,8 @@ function inventorystockclick(id) {
     $('.popup #totalprice').text(stockprice * stockamount);
     enablepopup();
     $('.popup #amount-select *').click(function() {
-        $('#popup-amt').text(stockamount);
-        $('.popup #totalprice').text(stockprice * stockamount);
+        $('#popup-amt').text(numberspacer(stockamount));
+        $('.popup #totalprice').text(numberspacer(stockprice * stockamount));
     })
 
     $('.popup #buy-btn').attr('onclick', 'sellstock(stockid, stockamount); disablepopup();');
@@ -212,10 +216,24 @@ function randomizeprice(currentprice, maxdifference) {
     return newprice
 }
 
+function calculateprofit(id) {
+    if (findWithAttr(ownedstocks, 'id', id) !== -1) {
+        marketprice = marketstocks[findWithAttr(marketstocks, 'id', id)].price;
+        boughtprice = ownedstocks[findWithAttr(ownedstocks, 'id', id)].price;
+
+        if (marketprice >= boughtprice) {
+            return `<a id="profit-positive" class="profit"><img width="25px" src="./images/positive.png">${numberspacer(-(boughtprice - marketprice))}$</a>`
+        } else if (marketprice < boughtprice) {
+            return `<a id="profit-negative" class="profit"><img width="25px" src="./images/negative.png">${numberspacer(-(boughtprice - marketprice))}</a>`
+        }
+    } else return 'error'
+}
+
 let tips = [
     'Press on stock to open buy/sell menu!',
     'Press "Next day" to make prices change!',
-    'Press on "Max" button when selecting purchase amount to set the amount to max you can afford!'
+    'Press on "Max" button when selecting purchase amount to set the amount to max you can afford!',
+    'Earn money by selling stocks for more money than you bought them for!'
 ]
 
 // end
@@ -231,13 +249,18 @@ let marketstocks = [
     { id:"MSFT", name:"Microsoft Corporation", price:10 },
     { id:"FB", name:"Facebook, Inc.", price:10 },
     { id:"ADBE", name:"Adobe, Inc.", price:10 },
-    { id:"EBAY", name:"eBay Inc.", price:10 },
     { id:"INTC", name:"Intel Corporation", price:10 },
-    { id:"ZM", name:"Zoom Video Communications, Inc.", price:10 },
+    { id:"NVDA", name:"Nvidia", price:10 },
     { id:"PYPL", name:"PayPal Holdings, Inc.", price:10 },
 ]
 
 let ownedstocks = []
 // end
 
-$(document).ready(function() {redraw(); nextday(); $('#popupouter').hide()});
+function secretcode() {"use strict";var up = 38,down = 40,left = 37,right = 39,A = 65,B = 66;var	secretCode = [up,up,down,down,left,right,left,right,B,A];var secretDetected = [];function attachCustomEvent(el, eventName, desiredFunction) {if (el.addEventListener) {el.addEventListener(eventName,desiredFunction,false);} else {el.attachEvent('on' + eventName,desiredFunction);}}function detachCustomEvent(el, eventName, desiredFunction) {if (el.removeEventListener) {el.removeEventListener(eventName,desiredFunction,false);} else {el.detachEvent('on' + eventName,desiredFunction);}}function startUpsecret() {detachCustomEvent(document,"keydown",issecretKey);secretIsDetected();}function issecretKey(e) {var evt = e || window.event;var key = evt.keyCode ? evt.keyCode : evt.which;   var codeOk = true;secretDetected.push(key);if (secretDetected.length < secretCode.length) {for (var i = 0, max = secretDetected.length; i < max ; i++) {if(secretDetected[i] !== secretCode[i]) {codeOk = false;}}if (!codeOk) {secretDetected = [];secretDetected.push(key);}} else if (secretDetected.length === secretCode.length) {for (var j = 0, max = secretDetected.length; j < max ; j++) {if(secretDetected[j] !== secretCode[j]) {codeOk = false;}}secretDetected = [];if (codeOk) {startUpsecret();}} else {secretDetected = [];}} attachCustomEvent(document,"keydown",issecretKey);};
+
+function secretIsDetected() {
+	transaction(parseInt(prompt('Code detected! Enter the amount of money you want: \nNOTE: You can only use this once!')));
+}
+
+$(document).ready(function() {redraw(); nextday(); $('#popupouter').hide(); secretcode()});

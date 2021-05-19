@@ -163,3 +163,18 @@ body {
     padding-left: 10px;
     border-left: solid 2px #ededed;
 }
+
+.profit {
+    text-align: right;
+    border-right: solid 2px #ededed;
+    padding-right: 10px;
+    white-space: nowrap;
+}
+
+#profit-positive {
+    color: #26ff00;
+}
+
+#profit-negative {
+    color: #ff1d00;
+}
