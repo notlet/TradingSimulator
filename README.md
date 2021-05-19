@@ -1,5 +1,6 @@
 # Trading Simulator
 Buy and sell stocks to make (ingame) money!
+#### Update logs: see commits descriptions.
 ## How to install
 Download full repository to any directory. <br>
 Open `main.html` in your desired browser. <br>
