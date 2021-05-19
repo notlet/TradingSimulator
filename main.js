@@ -224,7 +224,7 @@ function calculateprofit(id) {
         if (marketprice >= boughtprice) {
             return `<a id="profit-positive" class="profit"><img width="25px" src="./images/positive.png">${numberspacer(-(boughtprice - marketprice))}$</a>`
         } else if (marketprice < boughtprice) {
-            return `<a id="profit-negative" class="profit"><img width="25px" src="./images/negative.png">${numberspacer(-(boughtprice - marketprice))}</a>`
+            return `<a id="profit-negative" class="profit"><img width="25px" src="./images/negative.png">${numberspacer(-(boughtprice - marketprice))}$</a>`
         }
     } else return 'error'
 }
