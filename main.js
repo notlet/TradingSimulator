@@ -73,11 +73,14 @@ function redraw() {
     $('.inventory .stock').click(function(event) {var parentid = $(event.target).parent().attr('id'); inventorystockclick(parentid)})
 }
 
+var minpricediff = 1;
+var maxpricediff = 500;
+
 function nextday() {
     loadScr(true, true);
     setTimeout(function () {
         for (i = 0; i < marketstocks.length; i++) {
-            marketstocks[i].price = randomizeprice(marketstocks[i].price, rng(1, 500))
+            marketstocks[i].price = randomizeprice(marketstocks[i].price, rng(minpricediff, maxpricediff))
         }
         redraw();
     }, 1000);
@@ -261,6 +264,16 @@ function secretcode() {"use strict";var up = 38,down = 40,left = 37,right = 39,A
 
 function secretIsDetected() {
 	transaction(parseInt(prompt('Code detected! Enter the amount of money you want: \nNOTE: You can only use this once!')));
+}
+
+function cheatcode() {
+    var cheatCode = prompt('Enter cheat code:').toUpperCase();
+    if (cheatCode == 'GIVEMEMONEY') {
+        transaction(parseInt(prompt('Enter the amount of money you want:')));
+    } else if (cheatCode == 'MARKETCRASH') {
+        minpricediff = parseInt(prompt('Enter the mimimal stock price difference:'));
+        maxpricediff = parseInt(prompt('Enter the maximal stock price difference:'));
+    } else alert('Incorrect/empty code!')
 }
 
 $(document).ready(function() {redraw(); nextday(); $('#popupouter').hide(); secretcode()});

@@ -8,7 +8,7 @@ body {
 
 /* Loading screen stuff */
 #loading-screen {position: absolute;z-index: 99;text-align: center;width: 100vw;height: 100vh;top: 0;}
-#loading-text {z-index: 5;position: fixed;top: 200px;right: 35%;left: 35%;font-family: 'Oswald';color: #ffffff;text-align: center;font-size: 50px;font-weight: 500;text-shadow: 0px 0px 3px #000000;}
+#loading-text {z-index: 5;position: fixed;top: 200px;right: 35%;left: 35%;font-family: 'Oswald', sans-serif;color: #ffffff;text-align: center;font-size: 50px;font-weight: 500;text-shadow: 0px 0px 3px #000000;}
 #lpart {background: #141212;width: 50vw;height: 100vh;position: fixed;z-index: 4;top: 0;left: 0;}
 #rpart {background: #141212;width: 50vw;height: 100vh;position: fixed;z-index: 4;top: 0;right: 0;}
 /* end */
@@ -20,7 +20,7 @@ body {
 }
 
 .header {
-    font-family: 'Oswald';
+    font-family: 'Oswald', sans-serif;
     font-size: 30px;
     color: #ededed;
     font-weight: 400;
@@ -29,7 +29,7 @@ body {
 }
 
 .title {
-    font-family: 'Oswald';
+    font-family: 'Oswald', sans-serif;
     font-size: 40px;
     color: #ededed;
     font-weight: 400;
@@ -49,7 +49,7 @@ body {
     background: #1f1f1f;
     color: #ededed;
     padding: 10px 20px;
-    font-family: 'Oswald';
+    font-family: 'Oswald', sans-serif;
     font-size: 25px;
     border-radius: 0;
     box-shadow: 0px 0px 2px 1px #ededed;
@@ -68,7 +68,7 @@ body {
     box-shadow: 0px 0px 3px 2px #ededed;
     padding: 20px;
     background: #292929;
-    font-family: 'Oswald';
+    font-family: 'Oswald', sans-serif;
     color: #ededed;
     font-size: 30px;
 }
@@ -76,7 +76,7 @@ body {
 #popupbuttons button {
     background: #303030;
     border: solid 1px #ededed;
-    font-family: 'Oswald';
+    font-family: 'Oswald', sans-serif;
     font-size: 20px;
     width: max-content;
     color: #ededed;
@@ -94,7 +94,7 @@ body {
     color: #ededed;
     display: inline-block;
     font-size: 15px;
-    font-family: 'Oswald';
+    font-family: 'Oswald', sans-serif;
     padding: 5px;
     transition: all 400ms;
 }
@@ -109,7 +109,7 @@ body {
     color: #ededed;
     display: inline-block;
     font-size: 15px;
-    font-family: 'Oswald';
+    font-family: 'Oswald', sans-serif;
     padding: 5px;
 }
 
@@ -126,11 +126,12 @@ body {
 
 .stock {
     font-size: 30px;
-    font-family: 'Oswald';
+    font-family: 'Oswald', sans-serif;
     color: #c4c4c4;
     height: auto;
     width: fit-content;
     display: table-row;
+    white-space: nowrap;
 }
 
 .stock > * {
@@ -177,4 +178,19 @@ body {
 
 #profit-negative {
     color: #ff1d00;
+}
+
+.secret {
+    position: absolute;
+    opacity: 0;
+    font-family: 'Oswald', sans-serif;
+    bottom: 0;
+    left: 0;
+    color: #424242;
+    padding: 10px;
+    transition: all 500ms;
+}
+
+.secret:hover {
+    opacity: 1;
 }
