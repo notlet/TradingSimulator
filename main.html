@@ -13,14 +13,14 @@
 </head>
 <body>
     <!-- Loading screen stuff -->
-    <div id="loading-screen" style="display: none;"><div id="lpart" style="width: 0px;"></div><div id="rpart" style="width: 0px;"></div><div id="loading-text" class="loading-text" style="display: none;"><a>Trading Simulator</a><img src="https://duckside.me/catalog/view/theme/default/image/loading.gif" width="30%"><div style="font-size: 20px;">Tip: <a id="loadscreentip">???</a></div></div></div>
+    <div id="loading-screen" style="display: none;"><div id="lpart" style="width: 0px;"></div><div id="rpart" style="width: 0px;"></div><div id="loading-text" class="loading-text" style="display: none;"><a>Trading Simulator</a><img src="./images/loading.gif" width="30%"><div style="font-size: 20px;">Tip: <a id="loadscreentip">???</a></div></div></div>
     <!-- end -->
     <div class="header">
         <div style="display: inline-block;"><a id="money">$<a id="moneyval">???</a></div>
     </div>
     <div class="center">
-        <div id="page-content" style="margin-top: 20px; transition: all 200ms;">
-            <div class="half-page-block market">
+        <div id="page-content" style="margin-top: 20px; transition: all 200ms; display: table; width: 100%;">
+            <div class="half-page-block market" style="border-right: solid 2px #ededed;">
                 <div class="title">Avalible stocks</div>
                 <div class="stockslistouter">
                     <div class="stockslist">
@@ -28,10 +28,9 @@
                     </div>
                 </div>
             </div>
-            <div style="background-color: #ededed; width: 4px; height: 80vh; position: absolute; display: inline-block;"></div>
-            <div class="half-page-block inventory">
+            <div class="half-page-block inventory" style="border-left: solid 2px #ededed;">
                 <div class="title">Owned stocks</div>
-                <div class="stockslistouter" style="margin-left: 30px;">
+                <div class="stockslistouter">
                     <div class="stockslist">
                         <div class="stock" id="startinv"><a id="price">?$</a><a id="shortname">???</a><a id="name">????????</a><a id="amount">x?</a></div>
                     </div>

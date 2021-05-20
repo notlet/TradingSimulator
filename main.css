@@ -6,6 +6,24 @@ body {
     overflow: hidden;
 }
 
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #303030; 
+    border-radius: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #414141; 
+    border-radius: 15px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #5a5a5a; 
+}
+
 /* Loading screen stuff */
 #loading-screen {position: absolute;z-index: 99;text-align: center;width: 100vw;height: 100vh;top: 0;}
 #loading-text {z-index: 5;position: fixed;top: 200px;right: 35%;left: 35%;font-family: 'Oswald', sans-serif;color: #ffffff;text-align: center;font-size: 50px;font-weight: 500;text-shadow: 0px 0px 3px #000000;}
@@ -36,9 +54,9 @@ body {
 }
 
 .half-page-block {
-    width: 46%;
     height: auto;
-    display: inline-block;
+    display: table-cell;
+    padding: 0 10px;
 }
 
 .nextdaybtn {
@@ -115,7 +133,7 @@ body {
 
 .stockslistouter {
     height: 70vh;
-    overflow-y: auto;
+    overflow-y: overlay;
 }
 
 .stockslist {
