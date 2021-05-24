@@ -1,5 +1,4 @@
 body {
-    background-color: #171717;
     user-select: none;
     margin: 0; 
     height: 100%; 
@@ -11,24 +10,18 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-    background: #303030; 
     border-radius: 15px;
 }
 
-::-webkit-scrollbar-thumb {
-    background: #414141; 
+::-webkit-scrollbar-thumb { 
     border-radius: 15px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #5a5a5a; 
 }
 
 /* Loading screen stuff */
 #loading-screen {position: absolute;z-index: 99;text-align: center;width: 100vw;height: 100vh;top: 0;}
-#loading-text {z-index: 5;position: fixed;top: 200px;right: 35%;left: 35%;font-family: 'Oswald', sans-serif;color: #ffffff;text-align: center;font-size: 50px;font-weight: 500;text-shadow: 0px 0px 3px #000000;}
-#lpart {background: #141212;width: 50vw;height: 100vh;position: fixed;z-index: 4;top: 0;left: 0;}
-#rpart {background: #141212;width: 50vw;height: 100vh;position: fixed;z-index: 4;top: 0;right: 0;}
+#loading-text {z-index: 5;position: fixed;top: 200px;right: 35%;left: 35%; transition: color 400ms; font-family: 'Oswald', sans-serif;text-align: center;font-size: 50px;font-weight: 500;}
+#lpart {width: 50vw;height: 100vh;position: fixed;z-index: 4;top: 0;left: 0; transition: background;}
+#rpart {width: 50vw;height: 100vh;position: fixed;z-index: 4;top: 0;right: 0;}
 /* end */
 
 *:focus { outline: 0; }
@@ -40,7 +33,6 @@ body {
 .header {
     font-family: 'Oswald', sans-serif;
     font-size: 30px;
-    color: #ededed;
     font-weight: 400;
     text-align: center;
     padding: 10px;
@@ -49,7 +41,6 @@ body {
 .title {
     font-family: 'Oswald', sans-serif;
     font-size: 40px;
-    color: #ededed;
     font-weight: 400;
 }
 
@@ -59,57 +50,47 @@ body {
     padding: 0 10px;
 }
 
+#elementblocker {
+    position: fixed;
+    transition: all 400ms ease 0s;
+    width: 100vw;
+    height: 100vh;
+    top: 0px;
+    left: 0px;
+    background: rgb(0, 0, 0);
+    opacity: 0.2;
+    z-index: 20;
+}
+
 .nextdaybtn {
     position: absolute;
     bottom: 20px;
     right: 15px;
     border: 0;
-    background: #1f1f1f;
-    color: #ededed;
     padding: 10px 20px;
     font-family: 'Oswald', sans-serif;
     font-size: 25px;
     border-radius: 0;
-    box-shadow: 0px 0px 2px 1px #ededed;
     transition: all 500ms;
-}
-
-.nextdaybtn:hover {
-    background: #292929;
-    color: #ffffff;
-    box-shadow: 0px 0px 2px 1px #ffffff;
 }
 
 .popup {
     position: relative;
     left: -50%;
-    box-shadow: 0px 0px 3px 2px #ededed;
     padding: 20px;
-    background: #292929;
     font-family: 'Oswald', sans-serif;
-    color: #ededed;
     font-size: 30px;
 }
 
 #popupbuttons button {
-    background: #303030;
-    border: solid 1px #ededed;
     font-family: 'Oswald', sans-serif;
     font-size: 20px;
     width: max-content;
-    color: #ededed;
     transition: all 400ms;
-}
-
-#popupbuttons button:hover {
-    background: #3d3d3d;
-    color: #ffffff;
 }
 
 #amount-select button {
     border: 0;
-    background: #303030;
-    color: #ededed;
     display: inline-block;
     font-size: 15px;
     font-family: 'Oswald', sans-serif;
@@ -117,14 +98,8 @@ body {
     transition: all 400ms;
 }
 
-#amount-select button:hover {
-    background: #3d3d3d;
-    color: #ffffff;
-}
-
 #amount-select div {
     border: 0;
-    color: #ededed;
     display: inline-block;
     font-size: 15px;
     font-family: 'Oswald', sans-serif;
@@ -145,7 +120,6 @@ body {
 .stock {
     font-size: 30px;
     font-family: 'Oswald', sans-serif;
-    color: #c4c4c4;
     height: auto;
     width: fit-content;
     display: table-row;
@@ -159,7 +133,6 @@ body {
 
 #shortname {
     text-align: left;
-    border-right: solid 2px #ededed;
     padding-right: 10px;
     padding-left: 10px;
 }
@@ -173,19 +146,16 @@ body {
 
 #price {
     text-align: right;
-    border-right: solid 2px #ededed;
     padding-right: 10px;
 }
 
 #amount {
     text-align: left;
     padding-left: 10px;
-    border-left: solid 2px #ededed;
 }
 
 .profit {
     text-align: right;
-    border-right: solid 2px #ededed;
     padding-right: 10px;
     white-space: nowrap;
 }
@@ -204,11 +174,26 @@ body {
     font-family: 'Oswald', sans-serif;
     bottom: 0;
     left: 0;
-    color: #424242;
     padding: 10px;
     transition: all 500ms;
 }
 
 .secret:hover {
     opacity: 1;
+}
+
+#settings {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+#themebox {
+    font-family: 'Oswald', sans-serif;
+    transition: all 400ms;
+}
+
+#themeselect {
+    font-family: 'Oswald', sans-serif;
+    transition: all 400ms;
 }

@@ -1,0 +1,214 @@
+@keyframes bgColor {
+    12.5% {
+      background-color: #FF0000;
+    }
+    25% {
+      background-color: #FFA500;
+    }
+    37.5% {
+      background-color: #FFFF00;
+    }
+    50% {
+      background-color: #7FFF00;
+    }
+    62.5% {
+      background-color: #00FFFF;
+    }
+    75% {
+      background-color: #0000FF;
+    }
+    87.5% {
+      background-color: #9932CC;
+    }
+    100% {
+      background-color: #FF1493;
+    }
+}
+
+@keyframes textColor {
+    12.5% {
+      color: #FF0000;
+    }
+    25% {
+      color: #FFA500;
+    }
+    37.5% {
+      color: #FFFF00;
+    }
+    50% {
+      color: #7FFF00;
+    }
+    62.5% {
+      color: #00FFFF;
+    }
+    75% {
+      color: #0000FF;
+    }
+    87.5% {
+      color: #9932CC;
+    }
+    100% {
+      color: #FF1493;
+    }
+}
+
+@keyframes rightBorderColor {
+    12.5% {
+      border-right: #FF0000 solid 2px;
+    }
+    25% {
+      border-right: #FFA500 solid 2px;
+    }
+    37.5% {
+      border-right: #FFFF00 solid 2px;
+    }
+    50% {
+      border-right: #7FFF00 solid 2px;
+    }
+    62.5% {
+      border-right: #00FFFF solid 2px;
+    }
+    75% {
+      border-right: #0000FF solid 2px;
+    }
+    87.5% {
+      border-right: #9932CC solid 2px;
+    }
+    100% {
+      border-right: #FF1493 solid 2px;
+    }
+}
+
+@keyframes leftBorderColor {
+    12.5% {
+      border-left: #FF0000 solid 2px;
+    }
+    25% {
+      border-left: #FFA500 solid 2px;
+    }
+    37.5% {
+      border-left: #FFFF00 solid 2px;
+    }
+    50% {
+      border-left: #7FFF00 solid 2px;
+    }
+    62.5% {
+      border-left: #00FFFF solid 2px;
+    }
+    75% {
+      border-left: #0000FF solid 2px;
+    }
+    87.5% {
+      border-left: #9932CC solid 2px;
+    }
+    100% {
+      border-left: #FF1493 solid 2px;
+    }
+}
+
+
+
+body {
+    background-color: #0e0e0e;
+}
+
+/* Loading screen stuff */
+#loading-text {color: #ffffff; text-shadow: 0px 0px 3px #000000;}
+#lpart {background: #ececec;}
+#rpart {background: #ececec;}
+/* end */
+
+
+::-webkit-scrollbar-track {
+    background: #303030; 
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #FF0000; animation: bgColor 5s infinite linear; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #5a5a5a; 
+}
+
+.header {
+    color: #FF0000; animation: textColor 5s infinite linear; 
+}
+
+.title {
+    color: #FF0000; animation: textColor 5s infinite linear; 
+}
+
+.nextdaybtn {
+    background-color: #FF0000; animation: bgColor 5s infinite linear; 
+    color: #ececec;
+    box-shadow: 0px 0px 2px 1px #ececec;
+}
+
+.popup {
+    box-shadow: 0px 0px 3px 2px #ececec;
+    background: #292929;
+    color: #FF0000; animation: textColor 5s infinite linear; 
+}
+
+#popupbuttons button {
+    background: #303030;
+    border: solid 1px #ececec;
+    color: #FF0000; animation: textColor 5s infinite linear; 
+}
+
+#amount-select button {
+    background: #303030;
+    color: #FF0000; animation: textColor 5s infinite linear; 
+}
+
+#amount-select div {
+    color: #FF0000; animation: textColor 5s infinite linear; 
+}
+
+.stock {
+    color: #FF0000; animation: textColor 5s infinite linear; 
+}
+
+#shortname {
+    border-right: solid 2px #FF0000; animation: rightBorderColor 5s infinite linear;
+}
+
+#price {
+    border-right: solid 2px #FF0000; animation: rightBorderColor 5s infinite linear;
+}
+
+#amount {
+    border-left: solid 2px #FF0000; animation: leftBorderColor 5s infinite linear;
+}
+
+.profit {
+    border-right: solid 2px #FF0000; animation: rightBorderColor 5s infinite linear;
+}
+
+.secret {
+    color: #424242;
+}
+
+.market {
+    border-right: solid 2px #FF0000; animation: rightBorderColor 5s infinite linear;
+}
+
+.inventory {
+    border-left: solid 2px #FF0000; animation: leftBorderColor 5s infinite linear;
+}
+
+#themeselect {
+    border: 0;
+    color: #FF0000; animation: textColor 5s infinite linear; 
+    background: #252525;
+}
+
+#themeselect:hover {
+    background: #ececec;
+    color: #3a3a3a;
+}
+
+#themeboxtext {
+    color: #FF0000; animation: textColor 5s infinite linear; 
+}

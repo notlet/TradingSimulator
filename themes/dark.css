@@ -1,0 +1,120 @@
+body {
+    background-color: #171717;
+}
+
+/* Loading screen stuff */
+#loading-text {color: #ffffff; text-shadow: 0px 0px 3px #000000;}
+#lpart {background: #141212;}
+#rpart {background: #141212;}
+/* end */
+
+
+::-webkit-scrollbar-track {
+    background: #303030; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: #414141; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #5a5a5a; 
+}
+
+.header {
+    color: #ededed;
+}
+
+.title {
+    color: #ededed;
+}
+
+.nextdaybtn {
+    background: #1f1f1f;
+    color: #ededed;
+    box-shadow: 0px 0px 2px 1px #ededed;
+}
+
+.nextdaybtn:hover {
+    background: #ececec;
+    color: #3a3a3a;
+    box-shadow: 0px 0px 2px 1px #ffffff;
+}
+
+.popup {
+    box-shadow: 0px 0px 3px 2px #ededed;
+    background: #292929;
+    color: #ededed;
+}
+
+#popupbuttons button {
+    background: #303030;
+    border: solid 1px #ededed;
+    color: #ededed;
+}
+
+#popupbuttons button:hover {
+    background: #ececec;
+    color: #3a3a3a;
+}
+
+#amount-select button {
+    background: #303030;
+    color: #ededed;
+}
+
+#amount-select button:hover {
+    background: #ececec;
+    color: #3a3a3a;
+}
+
+#amount-select div {
+    color: #ededed;
+}
+
+.stock {
+    color: #ededed;
+}
+
+#shortname {
+    border-right: solid 2px #ededed;
+}
+
+#price {
+    border-right: solid 2px #ededed;
+}
+
+#amount {
+    border-left: solid 2px #ededed;
+}
+
+.profit {
+    border-right: solid 2px #ededed;
+}
+
+.secret {
+    color: #424242;
+}
+
+.market {
+    border-right: solid 2px #ededed;
+}
+
+.inventory {
+    border-left: solid 2px #ededed;
+}
+
+#themeselect {
+    border: 0;
+    color: #ededed;
+    background: #252525;
+}
+
+#themeselect:hover {
+    background: #ececec;
+    color: #3a3a3a;
+}
+
+#themeboxtext {
+    color: #ededed;
+}

@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./main.css">
+    <link rel="stylesheet" href="./themes/dark.css" id="theme">
     <link rel="shortcut icon" href="./images/icon.png" type="image/x-icon">
     <script src="./jquery-3.6.0.min.js"></script>
     <script src="./main.js"></script>
@@ -20,7 +21,7 @@
     </div>
     <div class="center">
         <div id="page-content" style="margin-top: 20px; transition: all 200ms; display: table; width: 100%;">
-            <div class="half-page-block market" style="border-right: solid 2px #ededed;">
+            <div class="half-page-block market">
                 <div class="title">Avalible stocks</div>
                 <div class="stockslistouter">
                     <div class="stockslist">
@@ -28,7 +29,7 @@
                     </div>
                 </div>
             </div>
-            <div class="half-page-block inventory" style="border-left: solid 2px #ededed;">
+            <div class="half-page-block inventory">
                 <div class="title">Owned stocks</div>
                 <div class="stockslistouter">
                     <div class="stockslist">
@@ -40,7 +41,7 @@
     </div>
     <button class="nextdaybtn" onclick="nextday()">Next day</button>
     <a class="secret" onclick="cheatcode()">Enter Cheat Code</a>
-    <div id="elementblocker"  onclick="disablepopup()" style="display: none; position: fixed; transition: all 400ms; width: 100vw; height: 100vh; top: 0; left: 0; background: #000000; opacity: 0.2; z-index: 20;"></div>
+    <div id="elementblocker"  onclick="disablepopup()" style="display: none;"></div>
     <div id="popupouter" style="position: absolute; left: 50%; top: 25%; z-index: 21;">
         <div class="popup center">
             <div><a id="action">Buy</a> <a id="stockname">???</a> stocks</div>
@@ -56,6 +57,16 @@
                 <button onclick="disablepopup()">Cancel</button>
                 <button id="buy-btn"><a id="action">Buy</a> ($<a id="totalprice">??</a>)</button>
             </div>
+        </div>
+    </div>
+    <div id="settings">
+        <div id="themebox">
+            <a id="themeboxtext">Theme:</a>
+            <select id="themeselect" onchange="changeTheme(this)">
+                <option value="dark">Dark</option>
+                <option value="light">Light</option>
+                <option value="rainbow">Rainbow</option>
+            </select>
         </div>
     </div>
 </body>

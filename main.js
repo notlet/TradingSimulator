@@ -273,7 +273,19 @@ function cheatcode() {
     } else if (cheatCode == 'MARKETCRASH') {
         minpricediff = parseInt(prompt('Enter the mimimal stock price difference:'));
         maxpricediff = parseInt(prompt('Enter the maximal stock price difference:'));
+    } else if (cheatCode == 'NEWSTOCK') {
+        var newid = prompt('Enter the stock ID:');
+        var newname = prompt('Enter the stock name:');
+        marketstocks.push({id:newid, name:newname, price:randomizeprice(10, rng(minpricediff, maxpricediff))});
+        redraw();
+    } else if (cheatCode == 'R/MEMES') {
+        alert('why')
     } else alert('Incorrect/empty code!')
+}
+
+function changeTheme(selected) {
+    loadScr(true, true);
+    setTimeout(function() {$('#theme').attr('href', `./themes/${selected.value}.css`)}, 1000)
 }
 
 $(document).ready(function() {redraw(); nextday(); $('#popupouter').hide(); secretcode()});
