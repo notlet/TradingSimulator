@@ -9,8 +9,9 @@
     <link rel="stylesheet" href="./main.css">
     <link rel="stylesheet" href="./themes/dark.css" id="theme">
     <link rel="shortcut icon" href="./images/icon.png" type="image/x-icon">
-    <script src="./jquery-3.6.0.min.js"></script>
+    <script src="./modules/jquery-3.6.0.min.js"></script>
     <script src="./main.js"></script>
+    <script src="./modules/sweetalert.min.js"></script>
 </head>
 <body>
     <!-- Loading screen stuff -->
@@ -60,6 +61,7 @@
         </div>
     </div>
     <div id="settings">
+        <div id="resetbtn" onclick="pendReset()">Reset player data</div>
         <div id="themebox">
             <a id="themeboxtext">Theme:</a>
             <select id="themeselect" onchange="changeTheme(this)">

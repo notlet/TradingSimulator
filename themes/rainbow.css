@@ -212,3 +212,7 @@ body {
 #themeboxtext {
     color: #FF0000; animation: textColor 5s infinite linear; 
 }
+
+#resetbtn {
+  color: #FF0000; animation: textColor 5s infinite linear; 
+}

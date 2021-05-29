@@ -1,3 +1,5 @@
+// import * as sw from '/modules/sweetalert.min.js'
+
 // Loading screen stuff
 function loadScr(showIn, showOut) {
     $('#loading-screen #loadscreentip').text(tips[rng(0, tips.length - 1)]);
@@ -38,6 +40,17 @@ function numberspacer(value) {
         return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 }
 
+function arrayToLocalStorage(array, storageKey) {
+    var stringArray = JSON.stringify(array);
+    localStorage.setItem(storageKey, stringArray);
+    return stringArray
+}
+
+function arrayFromLocalStorage(storageKey) {
+    var stringArray = localStorage.getItem(storageKey);
+    return JSON.parse(stringArray)
+}
+
 function enablepopup() {
     $('#elementblocker').show()
     $('#popupouter').show().fadeOut(0).fadeIn(500);
@@ -69,8 +82,10 @@ function redraw() {
 
     $("#moneyval").text(numberspacer(playermoney));
 
-    $('.market .stock').click(function(event) {var parentid = $(event.target).parent().attr('id'); marketstockclick(parentid)})
-    $('.inventory .stock').click(function(event) {var parentid = $(event.target).parent().attr('id'); inventorystockclick(parentid)})
+    $('.market .stock').click(function(event) {var parentid = $(event.target).parent().attr('id'); marketstockclick(parentid)});
+    $('.inventory .stock').click(function(event) {var parentid = $(event.target).parent().attr('id'); inventorystockclick(parentid)});
+
+    saveStorageData();
 }
 
 var minpricediff = 1;
@@ -232,6 +247,49 @@ function calculateprofit(id) {
     } else return 'error'
 }
 
+function saveStorageData() {
+    arrayToLocalStorage(marketstocks, 'marketstocks');
+    arrayToLocalStorage(ownedstocks, 'ownedstocks');
+    localStorage.setItem('money', playermoney);
+}
+
+function loadStorageData() {
+    if (localStorage.getItem('reset') == 'true') {
+        saveStorageData();
+        localStorage.removeItem('reset');
+        nextday();
+        swal("Successfully reset player data.", {
+            icon: "success",
+        });
+        return 0
+    } else if (localStorage.getItem('money') === null) {
+        nextday(); saveStorageData();
+    } else {
+        var selectedtheme = 'dark'
+        if (localStorage.getItem('theme') !== null) {selectedtheme = localStorage.getItem('theme')}
+        $('#theme').attr('href', `./themes/${selectedtheme}.css`)
+        $('#themeselect').val(selectedtheme)
+        marketstocks.splice(0, marketstocks.length, ...arrayFromLocalStorage('marketstocks'));
+        ownedstocks.splice(0, ownedstocks.length, ...arrayFromLocalStorage('ownedstocks'));
+        playermoney = parseInt(localStorage.getItem('money'));
+    }
+}
+
+function pendReset() {
+    swal({
+        title: "Reset player data?", 
+        text: "All the owned stocks, market stocks prices, player money and custom stocks will be reset!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true
+    }).then((willDelete) => {
+        if (willDelete) {
+            localStorage.setItem('reset', 'true');
+            location.reload();
+        }
+      });
+}
+
 let tips = [
     'Press on stock to open buy/sell menu!',
     'Press "Next day" to make prices change!',
@@ -267,25 +325,73 @@ function secretIsDetected() {
 }
 
 function cheatcode() {
-    var cheatCode = prompt('Enter cheat code:').toUpperCase();
-    if (cheatCode == 'GIVEMEMONEY') {
-        transaction(parseInt(prompt('Enter the amount of money you want:')));
-    } else if (cheatCode == 'MARKETCRASH') {
-        minpricediff = parseInt(prompt('Enter the mimimal stock price difference:'));
-        maxpricediff = parseInt(prompt('Enter the maximal stock price difference:'));
-    } else if (cheatCode == 'NEWSTOCK') {
-        var newid = prompt('Enter the stock ID:');
-        var newname = prompt('Enter the stock name:');
-        marketstocks.push({id:newid, name:newname, price:randomizeprice(10, rng(minpricediff, maxpricediff))});
-        redraw();
-    } else if (cheatCode == 'R/MEMES') {
-        alert('why')
-    } else alert('Incorrect/empty code!')
+    var cheatCode = 0;
+    swal("Enter cheat code:", {
+        content: "input",
+    }).then((value) => {
+        cheatCode = value.toUpperCase();
+        console.log(`Entered cheat code "${cheatCode}".`)
+        if (cheatCode == 'GIVEMEMONEY') {
+            swal("Enter the amount of money you want:", {
+                content: "input",
+            }).then((value) => {
+                transaction(parseInt(value));
+                swal('Code activated!', {icon: 'success'})
+            });
+        } else if (cheatCode == 'MARKETCRASH') {
+            swal("Enter the mimimal stock price difference:", {
+                content: "input",
+            }).then((value) => {
+                minpricediff = parseInt(value);
+                swal("Enter the maximal stock price difference:", {
+                    content: "input",
+                }).then((value) => {
+                    maxpricediff = parseInt(value);
+                    swal('Code activated!', {icon: 'success'})
+                });
+            });
+        } else if (cheatCode == 'NEWSTOCK') {
+            var newid = 0;
+            var newname = 0;
+            var newprice = 0;
+
+            swal("Enter the new stock ID:", {
+                content: "input",
+            }).then((value) => {
+                newid = value.toUpperCase();
+                swal("Enter the new stock name:", {
+                    content: "input",
+                }).then((value) => {
+                    newname = value;
+                    swal("Enter the new stock price:", {
+                        content: "input",
+                    }).then((value) => {
+                        newprice = parseInt(value);
+                        marketstocks.push({id:newid, name:newname, price:newprice});
+                        redraw();
+                        swal('Code activated!', {icon: 'success'})
+                    });
+                });
+            });
+        } else if (cheatCode == 'DELSTOCK') {
+            swal("Enter the amount of money you want:", {
+                content: "input",
+            }).then((value) => {
+                var oldid = value.toUpperCase();
+                if (findWithAttr(marketstocks, 'id', oldid) > -1) {
+                    marketstocks.splice(findWithAttr(marketstocks, 'id', oldid), 1)
+                }
+                redraw();
+                swal('Code activated!', {icon: 'success'})
+            });
+        } else swal('Incorrect/empty code!')
+    });
 }
 
 function changeTheme(selected) {
     loadScr(true, true);
-    setTimeout(function() {$('#theme').attr('href', `./themes/${selected.value}.css`)}, 1000)
+    localStorage.setItem('theme', selected.value);
+    setTimeout(function() {$('#theme').attr('href', `./themes/${selected.value}.css`)}, 1000);
 }
 
-$(document).ready(function() {redraw(); nextday(); $('#popupouter').hide(); secretcode()});
+$(document).ready(function() {loadStorageData(); redraw(); $('#popupouter').hide(); secretcode();});
