@@ -646,7 +646,7 @@ function cheatcode() {
                     icon: 'success'
                 })
             });
-        } else if (cheatCode == 'GOLDENCOIN') {
+        } else if (cheatCode == 'GOLDENRAIN') {
             swal("Enter the chance of stock becoming golden:", {
                 content: "input",
             }).then((value) => {
