@@ -212,3 +212,8 @@ body {
 .swal-modal {
     font-family: sans-serif;
 }
+
+.golden {
+    text-shadow: 0px 0px 5px #ffbb00;
+    color: #ffd000 !important;
+}

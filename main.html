@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <title>Trading Simulator</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="./main.css">
     <link rel="stylesheet" href="./themes/dark.css" id="theme">
     <link rel="shortcut icon" href="./images/icon.png" type="image/x-icon">
@@ -13,9 +15,17 @@
     <script src="./main.js"></script>
     <script src="./modules/sweetalert.min.js"></script>
 </head>
+
 <body>
     <!-- Loading screen stuff -->
-    <div id="loading-screen" style="display: none;"><div id="lpart" style="width: 0px;"></div><div id="rpart" style="width: 0px;"></div><div id="loading-text" class="loading-text" style="display: none;"><a>Trading Simulator</a><img src="./images/loading.gif" width="30%"><div style="font-size: 20px;">Tip: <a id="loadscreentip">???</a></div></div></div>
+    <div id="loading-screen" style="display: none;">
+        <div id="lpart" style="width: 0px;"></div>
+        <div id="rpart" style="width: 0px;"></div>
+        <div id="loading-text" class="loading-text" style="display: none;"><a>Trading Simulator</a><img
+                src="./images/loading.gif" width="30%" style="display: block; margin: auto;">
+            <div style="font-size: 20px;">Tip: <a id="loadscreentip">???</a></div>
+        </div>
+    </div>
     <!-- end -->
     <div class="header">
         <div style="display: inline-block;"><a id="money">$<a id="moneyval">???</a></div>
@@ -26,7 +36,8 @@
                 <div class="title">Avalible stocks</div>
                 <div class="stockslistouter">
                     <div class="stockslist">
-                        <div class="stock" id="startmarket"><a id="price">?$</a><a id="shortname">???</a><a id="name">????????</a></div>
+                        <div class="stock" id="startmarket"><a id="price">?$</a><a id="shortname">???</a><a
+                                id="name">????????</a></div>
                     </div>
                 </div>
             </div>
@@ -34,7 +45,8 @@
                 <div class="title">Owned stocks</div>
                 <div class="stockslistouter">
                     <div class="stockslist">
-                        <div class="stock" id="startinv"><a id="price">?$</a><a id="shortname">???</a><a id="name">????????</a><a id="amount">x?</a></div>
+                        <div class="stock" id="startinv"><a id="price">?$</a><a id="shortname">???</a><a
+                                id="name">????????</a><a id="amount">x?</a></div>
                     </div>
                 </div>
             </div>
@@ -42,7 +54,7 @@
     </div>
     <button class="nextdaybtn" onclick="nextday()">Next day</button>
     <a class="secret" onclick="cheatcode()">Enter Cheat Code</a>
-    <div id="elementblocker"  onclick="disablepopup()" style="display: none;"></div>
+    <div id="elementblocker" onclick="disablepopup()" style="display: none;"></div>
     <div id="popupouter" style="position: absolute; left: 50%; top: 25%; z-index: 21;">
         <div class="popup center">
             <div><a id="action">Buy</a> <a id="stockname">???</a> stocks</div>
@@ -72,4 +84,5 @@
         </div>
     </div>
 </body>
+
 </html>
