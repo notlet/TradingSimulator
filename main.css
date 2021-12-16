@@ -18,10 +18,10 @@ body {
 }
 
 /* Loading screen stuff */
-#loading-screen {position: absolute;z-index: 99;text-align: center;width: 100vw;height: 100vh;top: 0; transition: all 1000ms;}
-#loading-text {z-index: 5;position: fixed;top: 200px;right: 35%;left: 35%; transition: all 500ms; font-family: 'Oswald', sans-serif;text-align: center;font-size: 50px;font-weight: 500; transition: all 1000ms;}
-#lpart {width: 50vw;height: 100vh;position: fixed;z-index: 4;top: 0;left: 0; transition: all 1000ms;}
-#rpart {width: 50vw;height: 100vh;position: fixed;z-index: 4;top: 0;right: 0; transition: all 1000ms;}
+#loading-screen {position: absolute; z-index: 99; text-align: center; width: 100vw; height: 100vh; top: 0; transition: all 1000ms;}
+#loading-text {z-index: 5; position: fixed; top: 200px; right: 35%; left: 35%; transition: all 500ms; font-family: 'Oswald', sans-serif; text-align: center; font-size: 50px; font-weight: 500;}
+#lpart {width: 50vw; height: 100vh; position: fixed; z-index: 4;top: 0;left: 0; transition: all 1000ms;}
+#rpart {width: 50vw; height: 100vh; position: fixed; z-index: 4;top: 0;right: 0; transition: all 1000ms;}
 /* end */
 
 *:focus { outline: 0; }
