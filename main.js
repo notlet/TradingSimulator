@@ -1,34 +1,25 @@
-// import * as sw from '/modules/sweetalert.min.js'
-
 // Loading screen stuff
 function loadScr(showIn, showOut) {
     $('#loading-screen #loadscreentip').text(tips[rng(0, tips.length - 1)]);
+    $("#rpart").css("width", "0%");
+    $("#lpart").css("width", "0%");
+    $("#loading-text").css('opacity', '0');
     $("#loading-screen").show();
     if (showIn == true) {
-        $("#rpart").css("width", "0");
-        $("#lpart").css("width", "0");
-        $("#lpart").animate({
-            width: "+=" + window.innerWidth / 2 + 1
-        }, 1000, function () {});
-        $("#rpart").animate({
-            width: "+=" + window.innerWidth / 2 + 1
-        }, 1000, function () {});
-        $("#loading-text").fadeIn(1000);
+        $("#rpart").css("width", "50%");
+        $("#lpart").css("width", "50%");
+        $("#loading-text").css('opacity', '1');
     };
     setTimeout(function () {
+        $("#rpart").css("width", "0%");
+        $("#lpart").css("width", "0%");
         if (showOut == true) {
-            $("#lpart").animate({
-                width: "-=" + window.innerWidth / 2
-            }, 1000, function () {});
-            $("#rpart").animate({
-                width: "-=" + window.innerWidth / 2
-            }, 1000, function () {});
-            $("#loading-text").fadeOut(1000);
+            $("#loading-text").css('opacity', '0');
             setTimeout(function () {
                 $("#loading-screen").hide();
             }, 1100);
         };
-    }, 2000);
+    }, 2500);
 }
 // end
 
@@ -506,72 +497,12 @@ let marketstocks = [{
 let ownedstocks = []
 // end
 
-function secretcode() {
-    "use strict";
-    var up = 38,
-        down = 40,
-        left = 37,
-        right = 39,
-        A = 65,
-        B = 66;
-    var secretCode = [up, up, down, down, left, right, left, right, B, A];
-    var secretDetected = [];
-
-    function attachCustomEvent(el, eventName, desiredFunction) {
-        if (el.addEventListener) {
-            el.addEventListener(eventName, desiredFunction, false);
-        } else {
-            el.attachEvent('on' + eventName, desiredFunction);
-        }
-    }
-
-    function detachCustomEvent(el, eventName, desiredFunction) {
-        if (el.removeEventListener) {
-            el.removeEventListener(eventName, desiredFunction, false);
-        } else {
-            el.detachEvent('on' + eventName, desiredFunction);
-        }
-    }
-
-    function startUpsecret() {
-        detachCustomEvent(document, "keydown", issecretKey);
-        secretIsDetected();
-    }
-
-    function issecretKey(e) {
-        var evt = e || window.event;
-        var key = evt.keyCode ? evt.keyCode : evt.which;
-        var codeOk = true;
-        secretDetected.push(key);
-        if (secretDetected.length < secretCode.length) {
-            for (var i = 0, max = secretDetected.length; i < max; i++) {
-                if (secretDetected[i] !== secretCode[i]) {
-                    codeOk = false;
-                }
-            }
-            if (!codeOk) {
-                secretDetected = [];
-                secretDetected.push(key);
-            }
-        } else if (secretDetected.length === secretCode.length) {
-            for (var j = 0, max = secretDetected.length; j < max; j++) {
-                if (secretDetected[j] !== secretCode[j]) {
-                    codeOk = false;
-                }
-            }
-            secretDetected = [];
-            if (codeOk) {
-                startUpsecret();
-            }
-        } else {
-            secretDetected = [];
-        }
-    }
-    attachCustomEvent(document, "keydown", issecretKey);
-};
-
-function secretIsDetected() {
-    transaction(parseInt(prompt('Code detected! Enter the amount of money you want: \nNOTE: You can only use this once!')));
+function isInRange(value, min, max) {
+    if (typeof value == "number") {
+        if (value >= min && value <= max) {
+            return true
+        } else return false
+    } else return -1
 }
 
 function cheatcode() {
@@ -585,29 +516,35 @@ function cheatcode() {
             swal("Enter the amount of money you want:", {
                 content: "input",
             }).then((value) => {
-                transaction(parseInt(value));
-                swal('Code activated!', {
-                    icon: 'success'
-                })
+                if (parseInt(value) > 0) {
+                    transaction(parseInt(value));
+                    swal('Code activated!', {
+                        icon: 'success'
+                    })
+                } else swal('The entered value is not a number!', {icon:"error"})
             });
         } else if (cheatCode == 'MARKETCRASH') {
             swal("Enter the mimimal stock price difference:", {
                 content: "input",
             }).then((value) => {
-                minpricediff = parseInt(value);
+                if (parseInt(value) > 0) {
+                    minpricediff = parseInt(value);
+                } else swal('The entered value is not a number! Skipping this step...', {icon:"error"})
                 swal("Enter the maximal stock price difference:", {
                     content: "input",
                 }).then((value) => {
-                    maxpricediff = parseInt(value);
-                    swal('Code activated!', {
-                        icon: 'success'
-                    })
+                    if (parseInt(value) > 0) {
+                        maxpricediff = parseInt(value);
+                        swal('Code activated!', {
+                            icon: 'success'
+                        })
+                    } else swal('The entered value is not a number!', {icon:"error"})
                 });
             });
         } else if (cheatCode == 'NEWSTOCK') {
             var newid = 0;
             var newname = 0;
-            var newprice = 0;
+            var newprice = 10;
 
             swal("Enter the new stock ID:", {
                 content: "input",
@@ -620,7 +557,9 @@ function cheatcode() {
                     swal("Enter the new stock price:", {
                         content: "input",
                     }).then((value) => {
-                        newprice = parseInt(value);
+                        if (parseInt(value) > 0) {
+                            newprice = parseInt(value);
+                        }
                         marketstocks.push({
                             id: newid,
                             name: newname,
@@ -670,8 +609,9 @@ function changeTheme(selected) {
 }
 
 $(document).ready(function () {
+    console.warn("Do not enter anything here if you don't know what you are doing!")
+    console.log("If you want to report a bug, message LetGame#7020 on Discord!")
     loadStorageData();
     redraw();
     $('#popupouter').hide();
-    secretcode();
 });
